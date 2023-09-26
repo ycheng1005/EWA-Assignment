@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Product | Index";
+}
+
+@section head {
+    <style>
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .product {
+            border: 1px solid #333;
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .product > img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .product > form,
+        .product > div {
+            position: absolute;
+            background: #0009;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .product > form {
+            inset: 0 0 auto auto;
+        }
+
+        .product > div {
+            inset: auto 0 0 0;
+        }
+    </style>
+}
+
+<div id="target">
+    <partial name="_Index">
+</div>

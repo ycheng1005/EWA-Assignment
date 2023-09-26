@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Product | Success";
+    var orderId = TempData["OrderId"];
+}
+
+<p>
+    Checkout success.
+
+    @if (orderId == null)
+    {
+        @:View <a href="/Product/Order">orders</a>.
+    }
+    else
+    {
+        @:View <a href="/Product/OrderDetail/@orderId">order detail</a> (#@orderId).
+    }
+</p>

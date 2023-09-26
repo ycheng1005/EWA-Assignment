@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Order>
+
+@{
+    ViewBag.Title = "Product | Order";
+}
+
+@section head {
+    <style>
+        td:nth-child(3),
+        td:nth-child(4) {
+            text-align: right;
+        }
+    </style>
+}
+
+<p>
+    <button data-post="/Product/ResetAll">Reset All</button>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Count</th>
+        <th>Total</th>
+        <th></th>
+    </tr>
+    @foreach (Order order in Model)
+    {
+        <tr>
+            <td>@order.Id</td>
+            <td>@order.Date.ToString("yyyy-MM-dd")</td>
+
+            @* Calculate count and total *@
+            <td>@order.OrderLines.Sum(ol => ol.Quantity)</td>
+            <td>@order.OrderLines.Sum(ol => ol.Price * ol.Quantity)</td>
+
+            <td>
+                <button data-get="/Product/OrderDetail/@order.Id">Detail</button>
+            </td>
+        </tr>
+    }
+</table>
